@@ -1,6 +1,6 @@
-
+"use client";
 import "./globals.css";
-
+import ReactProvider from "@/components/ReactProvider";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -11,7 +11,7 @@ export default function RootLayout({
       <body
 
       >
-        {children}
+        <ReactProvider>{children}</ReactProvider>
       </body>
     </html>
   );

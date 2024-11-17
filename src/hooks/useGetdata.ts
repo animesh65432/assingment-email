@@ -1,23 +1,28 @@
-import axios from 'axios'
-import { useState } from 'react'
+import axios, { AxiosError } from 'axios';
+import { useState } from 'react';
 
-const useGetdata = () => {
-    const [loading, setloaindg] = useState<boolean>(false)
+const useGetData = <T = any>() => {
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null); // Track errors
 
-    const GetThedata = async () => {
-        setloaindg(true)
+    const getData = async (url: string): Promise<T | []> => {
+        setLoading(true);
+        setError(null);
         try {
-            let response = await axios.get("/api/?page=1")
-            console.log(response?.data)
-        } catch (error) {
-            console.log(error)
+            const response = await axios.get(url);
+            const result = response?.data?.data?.list;
+            return result;
+        } catch (err) {
+            const axiosError = err as AxiosError;
+            setError(axiosError.message || 'An error occurred');
+            console.error('Error fetching data:', axiosError);
+            return []
+        } finally {
+            setLoading(false);
         }
-        finally {
-            setloaindg(false)
-        }
-    }
+    };
 
-    return { loading, GetThedata }
-}
+    return { loading, error, getData };
+};
 
-export default useGetdata
+export default useGetData;
