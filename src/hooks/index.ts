@@ -1,4 +1,4 @@
 import useGetdata from "./useGetdata";
+import useEmailStatus from "./useEmailStatus";
 
-
-export { useGetdata }
+export { useGetdata, useEmailStatus }
