@@ -3,6 +3,7 @@ import axios from "axios"
 export const GET = async () => {
     try {
         const reponse = await axios.get(`${process.env.BACKEND_URL}`)
+        console.log(reponse, "Response From Backend")
         console.log(reponse?.data)
         return NextResponse.json({
             message: "Hello World",
