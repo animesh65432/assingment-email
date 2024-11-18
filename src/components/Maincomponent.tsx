@@ -12,13 +12,9 @@ const Maincomponent: React.FC = () => {
     const email = useSelector((state: RootStore) => state.Email.Email)
     const check = async () => {
         try {
-            if (email.length === 0) {
-                const data = await getData("/api")
-                dispatch(addEmail(data))
-            }
-            else {
-                return
-            }
+            const data = await getData("/api")
+            dispatch(addEmail(data))
+
         } catch {
             dispatch(addEmail([]))
         }
