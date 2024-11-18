@@ -11,8 +11,11 @@ interface EmailStatusMap {
 const useEmailStatus = () => {
 
     const [emailStatus, setEmailStatus] = useState<EmailStatusMap>(() => {
-        const saved = localStorage.getItem('emailStatus');
-        return saved ? JSON.parse(saved) : {};
+        if (typeof window !== 'undefined') {
+            const saved = localStorage.getItem('emailStatus');
+            return saved ? JSON.parse(saved) : {};
+        }
+        return {};
     });
 
 
