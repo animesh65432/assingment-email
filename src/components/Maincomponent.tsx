@@ -11,13 +11,13 @@ const Maincomponent: React.FC = () => {
         try {
             const data = await getData("/api")
             dispatch(addEmail(data))
-        } catch (error) {
+        } catch {
             dispatch(addEmail([]))
         }
     }
     useEffect(() => {
         check()
-    }, [])
+    }, [check])
     return (
         <main>
 

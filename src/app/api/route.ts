@@ -10,8 +10,7 @@ export const GET = async () => {
         }, {
             status: 200
         })
-    } catch (error) {
-
+    } catch {
         return NextResponse.json({
             message: "internal server error"
         }, {
