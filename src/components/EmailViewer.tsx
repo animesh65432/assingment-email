@@ -14,7 +14,8 @@ const EmailViewer: React.FC = () => {
     const [emailBody, setEmailBody] = useState<string>("");
     const [isLoading, setIsLoading] = useState(false);
     const [filterarray, setfilterarray] = useState<EmailData[]>([]);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 3;
     const { getEmailStatus, markAsRead, toggleFavorite } = useEmailStatus();
 
 
@@ -25,6 +26,8 @@ const EmailViewer: React.FC = () => {
         })),
         [emails, getEmailStatus]
     );
+
+    const totalPages = Math.ceil(filterarray.length / itemsPerPage);
 
 
     const filteralltheemails = useCallback(() => {
@@ -71,20 +74,55 @@ const EmailViewer: React.FC = () => {
 
     const selectedEmail = enhancedEmails.find(email => email.id === selectedEmailId);
 
+    const paginatedEmails = filterarray.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
+    const handlePageChange = (newPage: number) => {
+        if (newPage >= 1 && newPage <= totalPages) {
+            setCurrentPage(newPage);
+        }
+    };
+
     return (
-        <main className="flex h-screen bg-gray-100">
-            <EmailList
-                emails={filterarray}
-                selectedId={selectedEmailId}
-                onEmailSelect={handleEmailSelect}
-                onFavoriteToggle={handleFavoriteToggle}
-            />
-            <EmailBody
-                selectedEmail={selectedEmail}
-                isLoading={isLoading}
-                emailBody={emailBody}
-            />
+        <main className="grid grid-cols-12 ">
+            <div className="col-span-8">
+                <EmailList
+                    emails={paginatedEmails}
+                    selectedId={selectedEmailId}
+                    onEmailSelect={handleEmailSelect}
+                    onFavoriteToggle={handleFavoriteToggle}
+                />
+                <div className="flex justify-center items-center mt-4">
+                    <button
+                        className="px-4 py-2 mx-2 bg-gray-300 rounded hover:bg-gray-400"
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                    >
+                        Previous
+                    </button>
+                    <span className="px-4">
+                        Page {currentPage} of {totalPages}
+                    </span>
+                    <button
+                        className="px-4 py-2 mx-2 bg-gray-300 rounded hover:bg-gray-400"
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                    >
+                        Next
+                    </button>
+                </div>
+            </div>
+            <div className="col-span-4">
+                <EmailBody
+                    selectedEmail={selectedEmail}
+                    isLoading={isLoading}
+                    emailBody={emailBody}
+                />
+            </div>
         </main>
+
     );
 };
 

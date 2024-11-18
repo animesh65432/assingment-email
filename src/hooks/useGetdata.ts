@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 const useGetData = <T = any>() => {
     const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null); // Track errors
+    const [error, setError] = useState<string | null>(null);
 
     const getData = async (url: string): Promise<T | []> => {
         setLoading(true);

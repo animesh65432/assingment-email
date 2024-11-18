@@ -25,6 +25,7 @@ const EmailList = ({
                 />
             ))}
         </ul>
+
     </section>
 );
 

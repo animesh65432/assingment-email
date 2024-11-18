@@ -34,6 +34,7 @@ const Navbar: React.FC = () => {
                 >
                     Favorites
                 </li>
+
             </ul>
         </nav>
     );
