@@ -87,7 +87,7 @@ const EmailViewer: React.FC = () => {
 
     return (
         <main className="grid grid-cols-12 ">
-            <div className="col-span-8">
+            <div className="col-span-7">
                 <EmailList
                     emails={paginatedEmails}
                     selectedId={selectedEmailId}
@@ -114,7 +114,7 @@ const EmailViewer: React.FC = () => {
                     </button>
                 </div>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-5">
                 <EmailBody
                     selectedEmail={selectedEmail}
                     isLoading={isLoading}
