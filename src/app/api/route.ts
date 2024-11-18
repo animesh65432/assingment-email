@@ -1,6 +1,6 @@
-import { NextResponse, NextRequest } from "next/server"
+import { NextResponse } from "next/server"
 import axios from "axios"
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
     try {
         const reponse = await axios.get(`${process.env.BACKEND_URL}`)
         console.log(reponse?.data)

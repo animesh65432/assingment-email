@@ -9,7 +9,7 @@ const Maincomponent: React.FC = () => {
     const dispatch = useDispatch()
     const check = async () => {
         try {
-            let data = await getData("/api")
+            const data = await getData("/api")
             dispatch(addEmail(data))
         } catch (error) {
             dispatch(addEmail([]))
@@ -20,6 +20,7 @@ const Maincomponent: React.FC = () => {
     }, [])
     return (
         <main>
+
             <Navbar />
             <EmailViewer />
         </main>
