@@ -21,7 +21,7 @@ const Maincomponent: React.FC = () => {
     }
     useEffect(() => {
         check()
-    }, [check])
+    }, [])
     return (
         <main>
 
