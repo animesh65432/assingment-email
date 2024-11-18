@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useGetdata } from "../hooks"
 import { addEmail } from "../store/Slices/EmailSlices"
 import { useDispatch } from 'react-redux'
-import { EmailViewer } from "./index"
+import { EmailViewer, Navbar } from "./index"
 const Maincomponent: React.FC = () => {
     const { getData } = useGetdata()
     const dispatch = useDispatch()
@@ -20,6 +20,7 @@ const Maincomponent: React.FC = () => {
     }, [])
     return (
         <main>
+            <Navbar />
             <EmailViewer />
         </main>
 

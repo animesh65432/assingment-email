@@ -6,6 +6,7 @@ import EmailContent from "./EmailContent";
 import EmailListItem from "./EmailListitem";
 import EmailBody from "./Emailbody";
 import EmailViewer from "./EmailViewer";
+import Navbar from "./Navbar";
 
 
-export { Maincomponent, EmailList, Avatar, LoadingSpinner, EmailContent, EmailListItem, EmailBody, EmailViewer };
+export { Maincomponent, EmailList, Avatar, LoadingSpinner, EmailContent, EmailListItem, EmailBody, EmailViewer, Navbar };

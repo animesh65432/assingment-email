@@ -1,14 +1,15 @@
-interface EmailFrom {
-    name: string;
+interface EmailSender {
     email: string;
+    name: string;
 }
+
 
 export interface EmailData {
     id: string;
-    from: EmailFrom;
+    from: EmailSender;
     subject: string;
     short_description: string;
-    date: string;
+    date: number
 }
 
 export interface RootStore {

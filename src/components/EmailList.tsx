@@ -1,28 +1,6 @@
 import React from "react"
 import { EmailListItem } from ".";
-
-
-interface EmailFrom {
-    name: string;
-    email: string;
-}
-
-interface EmailData {
-    id: string;
-    from: EmailFrom;
-    subject: string;
-    short_description: string;
-    date: string;
-}
-
-interface RootStore {
-    Email: {
-        Email: EmailData[];
-    };
-}
-
-
-
+import { EmailData } from "../types"
 
 const EmailList = ({
     emails,

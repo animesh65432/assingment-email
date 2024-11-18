@@ -6,7 +6,7 @@ interface EmailSender {
     name: string;
 }
 
-interface ListItem {
+interface EmailData {
     id: string;
     from: EmailSender;
     date: number;
@@ -15,7 +15,7 @@ interface ListItem {
 }
 
 interface EmailSliceTypes {
-    Email: ListItem[]
+    Email: EmailData[]
 }
 
 const EmailSlices = createSlice({
